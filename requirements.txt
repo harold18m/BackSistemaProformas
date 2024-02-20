@@ -5,3 +5,5 @@ djangorestframework
 requests
 beautifulsoup4
 python-escpos
+usb
+mysqlclient
