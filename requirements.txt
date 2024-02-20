@@ -1,0 +1,7 @@
+Django
+django-filter
+corsheaders
+djangorestframework
+requests
+beautifulsoup4
+python-escpos
