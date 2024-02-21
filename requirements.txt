@@ -5,7 +5,7 @@ beautifulsoup4==4.12.2
 certifi==2023.11.17
 charset-normalizer==3.3.2
 colorama==0.4.6
-Django==5.0
+Django
 django-cors-headers==4.3.1
 django-filter==23.5
 djangorestframework==3.14.0
@@ -15,15 +15,11 @@ idna==3.6
 importlib-resources==6.1.1
 mysqlclient==2.1.0
 packaging==23.2
-pillow==10.2.0
-PyJWT==2.8.0
 pypng==0.20220715.0
-python-barcode==0.15.1
 python-escpos==3.1
 pytz==2023.3.post1
 pyusb==1.2.1
 PyYAML==6.0.1
-qrcode==7.4.2
 requests==2.31.0
 six==1.16.0
 soupsieve==2.5
