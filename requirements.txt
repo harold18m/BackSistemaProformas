@@ -1,10 +1,12 @@
+gunicorn
 Django
 django-filter
-corsheaders
 djangorestframework
 requests
 beautifulsoup4
 python-escpos
 usb
 mysqlclient
-gunicorn
+
+django-cors-headers
+
