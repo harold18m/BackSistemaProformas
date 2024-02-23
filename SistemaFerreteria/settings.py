@@ -27,8 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -85,6 +83,7 @@ WSGI_APPLICATION = 'SistemaFerreteria.wsgi.application'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "*",
 ]
 
 # Database
@@ -92,14 +91,31 @@ CORS_ALLOWED_ORIGINS = [
 import os
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': os.getenv('MYSQLDATABASE', 'default'),
+    #     'USER': os.getenv('MYSQLUSER', 'user'),
+    #     'PASSWORD': os.getenv('MYSQLPASSWORD', 'password'),
+    #     'HOST': os.getenv('MYSQLHOST', 'localhost'),
+    #     'PORT': os.getenv('MYSQLPORT', '3306'),
+    # }
+
+    #  'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'railway',
+    #     'USER': 'root',
+    #     'PASSWORD': '5HaEBghE3bgdbEHHHg5BG4hA-5BaD-2G',
+    #     'HOST': 'roundhouse.proxy.rlwy.net',
+    #     'PORT': '30396',
+    #  }
+
+    ##sqlite3
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('MYSQLDATABASE', 'default'),
-        'USER': os.getenv('MYSQLUSER', 'user'),
-        'PASSWORD': os.getenv('MYSQLPASSWORD', 'password'),
-        'HOST': os.getenv('MYSQLHOST', 'localhost'),
-        'PORT': os.getenv('MYSQLPORT', '3306'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
+
+
 }
 
 
