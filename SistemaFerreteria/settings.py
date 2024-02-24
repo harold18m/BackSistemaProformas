@@ -102,20 +102,20 @@ DATABASES = {
     #     'PORT': os.getenv('MYSQLPORT', '3306'),
     # }
 
-    #  'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'railway',
-    #     'USER': 'root',
-    #     'PASSWORD': '5HaEBghE3bgdbEHHHg5BG4hA-5BaD-2G',
-    #     'HOST': 'roundhouse.proxy.rlwy.net',
-    #     'PORT': '30396',
-    #  }
+     'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'railway',
+        'USER': 'root',
+        'PASSWORD': 'GgChabhE3Dg3F-cH14h56-E3D1BF46cC',
+        'HOST': 'viaduct.proxy.rlwy.net',
+        'PORT': '44648',
+     }
 
     ##sqlite3
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
 
 
 }
