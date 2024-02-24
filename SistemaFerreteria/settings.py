@@ -84,8 +84,8 @@ WSGI_APPLICATION = 'SistemaFerreteria.wsgi.application'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://localhost:3000",
-    "https://ec2-18-219-140-160.us-east-2.compute.amazonaws.com/",
-    "https://web-production-2a30.up.railway.app/",
+    "https://ec2-18-219-140-160.us-east-2.compute.amazonaws.com",
+    "https://web-production-2a30.up.railway.app",
 ]
 
 # Database
