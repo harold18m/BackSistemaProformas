@@ -86,6 +86,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://ec2-18-219-140-160.us-east-2.compute.amazonaws.com",
     "https://web-production-2a30.up.railway.app",
+    "http://3.143.220.6",
+    "http://localhost:8000",
 ]
 
 # Database
