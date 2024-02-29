@@ -96,11 +96,13 @@ CORS_ALLOWED_ORIGINS = [
     "https://web-production-2a30.up.railway.app",
     "http://3.143.220.6",
     "http://localhost:8000",
+    "https://ferreteria-virgen-de-guadalupe.com",
+    "https://www.ferreteria-virgen-de-guadalupe.com",
+    "http://ferreteria-virgen-de-guadalupe.com",
 ]
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-import os
 
 DATABASES = {
     # 'default': {
@@ -155,8 +157,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# settings.py
+
+STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
