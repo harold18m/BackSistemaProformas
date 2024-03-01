@@ -58,8 +58,8 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',  
     'django.middleware.security.SecurityMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
@@ -99,7 +99,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://ferreteria-virgen-de-guadalupe.com",
     "https://www.ferreteria-virgen-de-guadalupe.com",
     "http://ferreteria-virgen-de-guadalupe.com",
-    "https://sistema-proformas.vercel.app/",
+    "https://sistema-proformas.vercel.app",
 ]
 
 # Database
@@ -161,8 +161,10 @@ USE_TZ = True
 # settings.py
 
 STATIC_URL = '/static/'
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# Añade esta línea
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
