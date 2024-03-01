@@ -12,7 +12,8 @@ class Proforma(models.Model):
     completed = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.numero_proforma
+        fecha_formateada = self.fecha.strftime('%d/%m/%Y')
+        return self.numero_proforma + ' / ' + self.cliente + ' / ' + fecha_formateada
     
     def save(self, *args, **kwargs):
         if not self.numero_proforma:
