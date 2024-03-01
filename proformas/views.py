@@ -16,7 +16,7 @@ class CrearProforma(APIView):
     def post(self, request, *args, **kwargs):
 
         importe_total = request.data.get('importeTotal')
-        if importe_total == 0 or importe_total == 0.00 or importe_total is None:
+        if importe_total == 0 or importe_total == "0.00" or importe_total is None:
             return Response({'message': 'Debe insertar datos a las filas para guardar la proforma'}, status=status.HTTP_400_BAD_REQUEST)
             
         cliente = request.data.get('cliente')
