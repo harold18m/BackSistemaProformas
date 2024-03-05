@@ -8,11 +8,9 @@ class ItemProformaSerializer(serializers.ModelSerializer):
         fields = ['descripcion', 'cantidad', 'precio_unitario', 'importe']
 
 class ProformaSerializer(serializers.ModelSerializer):
-    proforma_items = ItemProformaSerializer(many=True, read_only=True)
-
     class Meta:
         model = Proforma
-        fields = ['id' , 'numero_proforma','cliente','direccion','fecha', 'hora', 'importe_total', 'proforma_items', 'completed']
+        fields = ['id' , 'numero_proforma','cliente','direccion','fecha', 'hora', 'importe_total', 'completed']
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)

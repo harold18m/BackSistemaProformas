@@ -42,7 +42,7 @@ class CrearProforma(APIView):
                     importe=importe
                 )
 
-        return Response({'message': 'Proforma creada exitosamente'}, status=status.HTTP_201_CREATED)
+        return Response({'message': 'Proforma creada exitosamente', 'numero_proforma': nueva_proforma.numero_proforma}, status=status.HTTP_201_CREATED)
 
 class StandardResultsSetPagination(PageNumberPagination):
     page_size = 10
@@ -84,34 +84,53 @@ def tipo_de_cambio_view(request):
     tipo_de_cambio = obtener_tipo_de_cambio()
     return JsonResponse({'tipo_de_cambio': tipo_de_cambio})
 
+def imprimir_ultima_proforma(request):
+    try:
+        proforma = Proforma.objects.order_by('-fecha', '-hora').first()
+        if proforma is None:
+            return JsonResponse({'status': 'error', 'message': 'No hay proformas para imprimir'})
+        
+        items = ItemProforma.objects.filter(proforma=proforma)
+        item_serializer = ItemProformaSerializer(items, many=True)
+        
+        data = {
+            'numero_proforma': proforma.numero_proforma,
+            'cliente': proforma.cliente,
+            'direccion': proforma.direccion,
+            'fecha': proforma.fecha,
+            'hora': proforma.hora.strftime("%H:%M"), 
+            'proforma_items': item_serializer.data,
+            'importe_total': proforma.importe_total,
+        }
+        
+        return JsonResponse(data, safe=False)
+    
+    except Exception as e:
+        return JsonResponse({'status': 'error', 'message': str(e)})
+
 def imprimir_proforma(request, pk):
     try:
         proforma = Proforma.objects.get(pk=pk)
+        if proforma is None:
+            return JsonResponse({'status': 'error', 'message': 'No hay proformas para imprimir'})
+        
         items = ItemProforma.objects.filter(proforma=proforma)
-
-        # Aquí debes enviar los datos de la proforma a la impresora térmica
-        p = Usb(0x0416, 0x5011)
-        p.text('FERRETERIA VIRGEN DE GUADALUPE\n')
-        p.text('Telf: 975 495 081 / 943 367 808\n')
-        p.text('PROFORMA:   {}\n'.format(proforma.numero_proforma))
-        p.text('FECHA:   {}\n'.format(proforma.fecha))
-        p.text('CLIENTE: {}\n'.format(proforma.cliente))
-        p.text('DIRECCION: {}\n'.format(proforma.direccion))
-
-        for item in items:
-            p.text('DESCRIPCION: {}\n'.format(item.descripcion))
-            p.text('CANT: {}\n'.format(item.cantidad))
-            p.text('P. UNIT: {}\n'.format(item.precio_unitario))
-            p.text('IMPORTE: {}\n'.format(item.importe))
-
-        p.text('Total a pagar : {}\n'.format(proforma.importe_total))
-        p.text('GRACIAS POR SU PREFERENCIA !!\n')
-        p.text('No hay devoluciones\n')
-        p.cut()
-        return JsonResponse({'status': 'success'})
+        item_serializer = ItemProformaSerializer(items, many=True)
+        
+        data = {
+            'numero_proforma': proforma.numero_proforma,
+            'cliente': proforma.cliente,
+            'direccion': proforma.direccion,
+            'fecha': proforma.fecha,
+            'hora': proforma.hora.strftime("%H:%M"), 
+            'proforma_items': item_serializer.data,
+            'importe_total': proforma.importe_total,
+        }
+        
+        return JsonResponse(data, safe=False)
     
-    except Proforma.DoesNotExist:
-        return JsonResponse({'status': 'error', 'message': 'Proforma no encontrada'})
+    except Exception as e:
+        return JsonResponse({'status': 'error', 'message': str(e)})
     
 from datetime import datetime
 
