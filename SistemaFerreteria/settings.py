@@ -100,6 +100,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://www.ferreteria-virgen-de-guadalupe.com",
     "http://ferreteria-virgen-de-guadalupe.com",
     "https://sistema-proformas.vercel.app",
+    "http://148.113.174.2"
 ]
 
 # Database
